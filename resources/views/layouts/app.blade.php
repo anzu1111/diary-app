@@ -16,14 +16,13 @@
     </head>
     <body class="font-sans antialiased bg-secondary max-w-md mx-auto px-4 pt-6">
         <div class="bg-secondary text-text">
-            @include('layouts.navigation')
 
-            <!-- Page Heading -->
             <div class="min-h-screen">
                 @yield('content')
             </div>
 
-            <!-- Page Content -->
+            @include('layouts.navigation')
+
         </div>
     </body>
 </html>
