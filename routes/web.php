@@ -11,6 +11,10 @@ Route::get('/create', function () {
     return view('pages.post.create');
 })->name('post.create');
 
+Route::get('/detail/{id}', function ($id) {
+    return view('pages.detail');
+})->name('detail');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
