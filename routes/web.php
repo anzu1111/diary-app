@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', function () {
     return view('pages/home');
-});
+})->name('home');
+
+Route::get('/create', function () {
+    return view('pages.post.create');
+})->name('post.create');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
