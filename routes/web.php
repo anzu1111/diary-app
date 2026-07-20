@@ -20,6 +20,11 @@ Route::get('/create', function () {
     return view('pages.post.create');
 })->name('post.create');
 
+Route::get('/tags', function () {
+    return view('pages.post.tags');
+})->name('post.tags');
+
+
 Route::get('/detail/{id}', function ($id) {
     return view('pages.detail');
 })->name('detail');
