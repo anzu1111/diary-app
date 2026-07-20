@@ -21,7 +21,10 @@
                 @yield('content')
             </div>
 
-            @include('layouts.navigation')
+            @hasSection('hideNavbar')
+            @else
+                @include('layouts.navigation')
+            @endif
 
         </div>
     </body>
