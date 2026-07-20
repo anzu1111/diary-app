@@ -3,6 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/auth/login', function () {
+    return view('pages.auth.login');
+})->name('login');
+
+Route::get('/auth/registration', function () {
+    return view('pages.auth.registration');
+})->name('registration');
+
+
 Route::get('/home', function () {
     return view('pages/home');
 })->name('home');
