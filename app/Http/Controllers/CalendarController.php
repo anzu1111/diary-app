@@ -18,7 +18,7 @@ class CalendarController extends Controller
         $startDay = $firstDay->dayOfWeek;
 
         return view('pages.calendar', compact(
-            'year','month','daysInMonth','starDay'
+            'year','month','daysInMonth','startDay'
         ));
     }
 }
