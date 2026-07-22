@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CalendarController;
+
 
 Route::get('/auth/login', function () {
     return view('pages.auth.login');
@@ -16,9 +18,10 @@ Route::get('/home', function () {
     return view('pages/home');
 })->name('home');
 
-Route::get('/calendar', function () {
-    return view('pages/calendar');
-})->name('calendar');
+
+Route::get('/calendar', [CalendarController::class, 'index'])
+    ->name('calendar');
+
 
 Route::get('/create', function () {
     return view('pages.post.create');
