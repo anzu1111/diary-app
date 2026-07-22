@@ -16,6 +16,10 @@ Route::get('/home', function () {
     return view('pages/home');
 })->name('home');
 
+Route::get('/calendar', function () {
+    return view('pages/calendar');
+})->name('calendar');
+
 Route::get('/create', function () {
     return view('pages.post.create');
 })->name('post.create');
