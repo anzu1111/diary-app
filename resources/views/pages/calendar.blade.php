@@ -8,6 +8,10 @@
         </p>
     </div>
 
+    <div class="w-full rounded-[12px] bg-white mt-[42px]">
+        <h2 class="text-[32px] font-semibold">{{ $month }}</h2><span class="text-[12px] font-semibold">月</span>
+    </div>
+
 </div>
 
 @endsection
