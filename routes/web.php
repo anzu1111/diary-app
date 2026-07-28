@@ -2,39 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CalendarController;
 
-
-Route::get('/auth/login', function () {
-    return view('pages.auth.login');
-})->name('login');
-
-Route::get('/auth/registration', function () {
-    return view('pages.auth.registration');
-})->name('registration');
-
-
-Route::get('/home', function () {
-    return view('pages/home');
-})->name('home');
-
-
-Route::get('/calendar', [CalendarController::class, 'index'])
-    ->name('calendar');
-
-
-Route::get('/create', function () {
-    return view('pages.post.create');
-})->name('post.create');
-
-Route::get('/tags', function () {
-    return view('pages.post.tags');
-})->name('post.tags');
-
-
-Route::get('/detail/{id}', function ($id) {
-    return view('pages.detail');
-})->name('detail');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
