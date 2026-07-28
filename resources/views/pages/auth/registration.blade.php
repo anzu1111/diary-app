@@ -17,7 +17,7 @@
                     placeholder="example@gmail.com"
                     autocomplete="off"
                     class="mt-2 w-full h-[50px] rounded-[10px] bg-white px-4 py-[14px] text-sm font-semiblold border-none outline-none"/>
-                    @error('name')
+                    @error('email')
                         <p class="mt-1 text-[13px] text-red-500">
                             {{ $message }}
                         </p>
@@ -63,7 +63,9 @@
                 <div class="mt-2 relative">
                     <div x-data="{ show: false }" class="relative mt-2">
                         <input
-                            placeholder="パスワード" id="password_confirmation"
+                            id="password_confirmation"
+                            name="password_confirmation"
+                            placeholder="パスワード"
                             :type="show ? 'text' : 'password'"
                             class="w-full h-[50px] rounded-[10px] bg-white px-4 pr-10 border-none outline-none"
                         >
@@ -85,7 +87,7 @@
                         </button>
                     </div>
                 </div>
-                @error('password')
+                @error('password_confirmation')
                     <p class="mt-1 text-[13px] text-red-500">
                         {{ $message }}
                     </p>

@@ -2,15 +2,23 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
-Route::get('/auth/login', function () {
-    return view('pages.auth.login');
-})->name('login');
+Route::middleware('guest')->group(function () {
+    Route::get('/auth/login', function () {
+        return view('pages.auth.login');
+    })->name('login');
 
-Route::get('/auth/registration', function () {
-    return view('pages.auth.registration');
-})->name('registration');
+    Route::post('/auth/login', [AuthenticatedSessionController::class, 'store']);
 
+    Route::get('/auth/registration', function () {
+        return view('pages.auth.registration');
+    })->name('registration');
+
+    Route::post('/auth/registration', [RegisteredUserController::class, 'store'])
+        ->name('register');
+});
 
 Route::get('/home', function () {
     return view('pages/home');
