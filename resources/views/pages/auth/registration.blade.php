@@ -59,11 +59,11 @@
             </div>
 
             <div class="pt-8">
-                <label for="password" class="text-[16px] font-semibold">パスワード(確認)</label>
+                <label for="password_confirmation" class="text-[16px] font-semibold">パスワード(確認)</label>
                 <div class="mt-2 relative">
                     <div x-data="{ show: false }" class="relative mt-2">
                         <input
-                            placeholder="パスワード"
+                            placeholder="パスワード" id="password_confirmation"
                             :type="show ? 'text' : 'password'"
                             class="w-full h-[50px] rounded-[10px] bg-white px-4 pr-10 border-none outline-none"
                         >
