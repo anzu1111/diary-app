@@ -5,7 +5,8 @@
 <div class="relative flex min-h-screen items-center justify-center overflow-hidden bg-base_color">
     <div class="w-full max-w-md px-4">
 
-        <form onsubmit="return false;">
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
             <div>
                 <label for="email" class="text-[16px] font-semibold">メールアドレス</label>
@@ -16,14 +17,20 @@
                     placeholder="example@gmail.com"
                     autocomplete="off"
                     class="mt-2 w-full h-[50px] rounded-[10px] bg-white px-4 py-[14px] text-sm font-semiblold border-none outline-none"/>
+                @error('email')
+                    <p class="mt-1 text-[13px] text-red-500">
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
+            
 
             <div class="pt-8">
                 <label for="password" class="text-[16px] font-semibold">パスワード</label>
                 <div class="relative mt-2">
                     <div x-data="{ show: false }" class="relative mt-2">
                         <input
-                            placeholder="パスワード"
+                            placeholder="パスワード" name="password"
                             :type="show ? 'text' : 'password'"
                             class="w-full h-[50px] rounded-[10px] bg-white px-4 pr-10 border-none outline-none"
                         >
@@ -45,10 +52,15 @@
                         </button>
                     </div>
                 </div>
+                @error('password')
+                    <p class="mt-1 text-[13px] text-red-500">
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
 
             <div class="mt-[145px]">
-                <button type="button" class="w-full h-[54px] rounded-[30px] bg-primary text-text text-[16px] font-semibold">ログイン</button>
+                <button type="submit" class="w-full h-[54px] rounded-[30px] bg-primary text-text text-[16px] font-semibold">ログイン</button>
             </div>
 
             <div class="mt-5 text-center">
