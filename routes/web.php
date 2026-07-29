@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CalendarController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/auth/login', function () {
@@ -23,6 +24,10 @@ Route::middleware('guest')->group(function () {
 Route::get('/home', function () {
     return view('pages/home');
 })->name('home');
+
+Route::get('/calendar', [CalendarController::class, 'index'])
+    ->name('calendar');
+
 
 Route::get('/create', function () {
     return view('pages.post.create');
