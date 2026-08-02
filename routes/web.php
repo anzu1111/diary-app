@@ -18,7 +18,7 @@ Route::middleware('guest')->group(function () {
     })->name('registration');
 
     Route::post('/auth/registration', [RegisteredUserController::class, 'store'])
-        ->name('register');
+        ->name('registeration');
 });
 
 Route::get('/home', function () {
@@ -32,6 +32,10 @@ Route::get('/calendar', [CalendarController::class, 'index'])
 Route::get('/create', function () {
     return view('pages.post.create');
 })->name('post.create');
+
+Route::get('/emotion', function () {
+    return view('pages.post.emotion');
+})->name('post.emotion');
 
 Route::get('/tags', function () {
     return view('pages.post.tags');
