@@ -1,4 +1,4 @@
-<button
+<a
     type="button"
     {{ $attributes->merge([
         'class' => '
@@ -13,4 +13,4 @@
     ]) }}
 >
     {{ $slot }}
-</button>
+</a>
