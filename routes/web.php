@@ -41,6 +41,11 @@ Route::get('/tags', function () {
     return view('pages.post.tags');
 })->name('post.tags');
 
+Route::get('/profile', function () {
+    return view('pages.profile');
+})->name('profile');
+
+
 
 Route::get('/detail/{id}', function ($id) {
     return view('pages.detail');
