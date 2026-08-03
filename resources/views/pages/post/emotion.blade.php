@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+
+
 <div class="min-h-screen">
 
     <!-- 日付 -->
@@ -21,41 +23,72 @@
         今の心の空模様は？
     </h1>
 
-    <div class="mt-[60px] grid grid-cols-2 gap-[18px]">
-
-        <x-ui.emotion-card
-            title="晴れ"
-            description="嬉しい・楽しい・満足"
+    <div
+        x-data="{ emotion: '' }"
+        class="mt-[60px] grid grid-cols-2 gap-[18px]"
+    >
+        <div
+            class="w-full"
+            x-on:click="emotion = 'sun'"
         >
-        <x-lucide-sun class="w-20 h-20 stroke-[1.0] text-[#D35A0E]" />
+            <x-ui.emotion-card
+                x-bind:class="emotion === 'sun'
+                    ? 'border-[#E5B996]'
+                    : 'border-white'"
+                title="晴れ"
+                description="嬉しい・楽しい・満足"
+            >
+                <x-lucide-sun class="w-20 h-20 stroke-[1.0] text-[#D35A0E]" />
+            </x-ui.emotion-card>
+        </div>
 
-        </x-ui.emotion-card>
-
-        <x-ui.emotion-card
-            title="雨"
-            description="悲しい・寂しい"
+        <div
+            class="w-full"
+            x-on:click="emotion = 'rain'"
         >
-        <x-lucide-cloud-rain class="w-20 h-20 stroke-[1.0] text-[#09438F]" />
-        
-        </x-ui.emotion-card>
+            <x-ui.emotion-card
+                x-bind:class="emotion === 'rain'
+                    ? 'border-[#E5B996]'
+                    : 'border-white'"
+                title="雨"
+                description="悲しい・寂しい"
+            >
+                <x-lucide-cloud-rain class="w-20 h-20 stroke-[1.0] text-[#09438F]" />
+            </x-ui.emotion-card>
+        </div>
 
-        <x-ui.emotion-card
-            title="曇り"
-            description="普段・穏やか"
+        <div
+            class="w-full"
+            x-on:click="emotion = 'cloud'"
         >
-        <x-lucide-cloudy class="w-20 h-20 stroke-[1.0] text-[#706E6E]" />
-        
-        </x-ui.emotion-card>
+            <x-ui.emotion-card
+                x-bind:class="emotion === 'cloud'
+                    ? 'border-[#E5B996]'
+                    : 'border-white'"
+                title="曇り"
+                description="普通・穏やか"
+            >
+                <x-lucide-cloud class="w-20 h-20 stroke-[1.0] text-[#706E6E]" />
+            </x-ui.emotion-card>
+        </div>
 
-        <x-ui.emotion-card
-            title="雷"
-            description="怒り・イライラ"
+        <div
+            class="w-full"
+            x-on:click="emotion = 'lightning'"
         >
-        <x-lucide-cloud-lightning class="w-20 h-20 stroke-[1.0] text-[#D7AB0F]" />
-        
-        </x-ui.emotion-card>
-
+            <x-ui.emotion-card
+                x-bind:class="emotion === 'lightning'
+                    ? 'border-[#E5B996]'
+                    : 'border-white'"
+                title="雷"
+                description="怒り・イライラ"
+            >
+                <x-lucide-cloud-lightning class="w-20 h-20 stroke-[1.0] text-[#D7AB0F]" />
+            </x-ui.emotion-card>
+        </div>
     </div>
+
+
 
     <div class="flex justify-end mt-[48px]">
         <x-ui.button href="{{ route('post.emotion') }}">
