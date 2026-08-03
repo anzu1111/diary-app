@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('hideNavbar', true)
 @section('content')
 
 
@@ -8,10 +9,10 @@
     <div class="relative flex items-center justify-center py-6">
         {{-- 戻るボタン --}}
         <a
-            href="{{ url()->previous() }}"
+            href="{{ route('post.create') }}"
             class="absolute left-0 flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-black/5"
         >
-            <i data-lucide="chevron-left" class="h-8 w-8 text-text"></i>
+            <x-lucide-chevron-left class="h-8 w-8 text-text"></x-lucide-chevron-left>
         </a>
         {{-- 日付 --}}
         <h1 class="text-[18px] font-semibold text-text">
@@ -32,9 +33,12 @@
             x-on:click="emotion = 'sun'"
         >
             <x-ui.emotion-card
-                x-bind:class="emotion === 'sun'
-                    ? 'border-[#E5B996]'
-                    : 'border-white'"
+                style="border-color: #FCFCFC;"
+                x-bind:style="{
+                    'border-color': emotion === 'sun'
+                        ? '#E5B996'
+                        : '#FCFCFC'
+                }"
                 title="晴れ"
                 description="嬉しい・楽しい・満足"
             >
@@ -47,11 +51,14 @@
             x-on:click="emotion = 'rain'"
         >
             <x-ui.emotion-card
-                x-bind:class="emotion === 'rain'
-                    ? 'border-[#E5B996]'
-                    : 'border-white'"
+                style="border-color: #FCFCFC;"
+                x-bind:style="{
+                    'border-color': emotion === 'rain'
+                        ? '#E5B996'
+                        : '#FCFCFC'
+                }"
                 title="雨"
-                description="悲しい・寂しい"
+                description="寂しい・悲しい"
             >
                 <x-lucide-cloud-rain class="w-20 h-20 stroke-[1.0] text-[#09438F]" />
             </x-ui.emotion-card>
@@ -62,9 +69,12 @@
             x-on:click="emotion = 'cloud'"
         >
             <x-ui.emotion-card
-                x-bind:class="emotion === 'cloud'
-                    ? 'border-[#E5B996]'
-                    : 'border-white'"
+                style="border-color: #FCFCFC;"
+                x-bind:style="{
+                    'border-color': emotion === 'cloud'
+                        ? '#E5B996'
+                        : '#FCFCFC'
+                }"
                 title="曇り"
                 description="普通・穏やか"
             >
@@ -77,9 +87,12 @@
             x-on:click="emotion = 'lightning'"
         >
             <x-ui.emotion-card
-                x-bind:class="emotion === 'lightning'
-                    ? 'border-[#E5B996]'
-                    : 'border-white'"
+                style="border-color: #FCFCFC;"
+                x-bind:style="{
+                    'border-color': emotion === 'lightning'
+                        ? '#E5B996'
+                        : '#FCFCFC'
+                }"
                 title="雷"
                 description="怒り・イライラ"
             >
@@ -91,7 +104,7 @@
 
 
     <div class="flex justify-end mt-[48px]">
-        <x-ui.button href="{{ route('post.emotion') }}">
+        <x-ui.button href="{{ route('post.tags') }}">
             次へ→
         </x-ui.button>
     </div>
