@@ -3,10 +3,16 @@
     'description',
 ])
 
-<div class="w-full h-[206px] rounded-[20px] bg-white flex flex-col items-center justify-center font-semibold">
+<div
+    {{ $attributes->class([
+        'w-full h-[206px] rounded-[20px] bg-white',
+        'border-4 flex flex-col items-center justify-center',
+        'font-semibold transition cursor-pointer',
+    ]) }}
+>
     {{ $slot }}
 
-    <div class="mt-2 text-text text-text">
+    <div class="mt-2 text-text">
         {{ $title }}
     </div>
 
@@ -14,5 +20,3 @@
         {{ $description }}
     </div>
 </div>
-
-

@@ -1,63 +1,147 @@
 @extends('layouts.app')
+
+@section('hideNavbar', true)
+
 @section('content')
+
+@php
+    $defaultTags = [
+        '自分',
+        '学校',
+        '仕事',
+        '友達',
+        '趣味',
+        '遊び',
+        '勉強',
+        '恋愛',
+        'スポーツ',
+        'ゲーム',
+        '音楽',
+        'あずは',
+    ];
+@endphp
 
 <div class="min-h-screen">
 
-    <div class="flex justify-center">
-        <p class="text-[18px] font-semibold">
-            2026年4月19日(日)
-        </p>
+    <div class="relative flex items-center justify-center py-6">
+        <a
+            href="{{ route('post.emotion') }}"
+            class="absolute left-0 flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-black/5"
+        >
+            <x-lucide-chevron-left class="h-8 w-8 text-text"></x-lucide-chevron-left>
+        </a>
+        {{-- 日付 --}}
+        <h1 class="text-[18px] font-semibold text-text">
+            {{ now()->format('Y/n/j(D)') }}
+        </h1>
     </div>
 
     <div class="mt-[52px] flex items-center justify-center gap-2">
         <h1 class="text-[20px] font-semibold">
             何について？
         </h1>
-        <p class="text-[12px] text-text font-semibold">※3つまで</p>
+
+        <p class="text-[12px] font-semibold text-text">
+            ※3つまで
+        </p>
     </div>
 
-    <div class="grid grid-cols-4 gap-[18px] mt-[52px]">
-        <x-ui.tag>自分</x-ui.tag>
-        <x-ui.tag>学校</x-ui.tag>
-        <x-ui.tag>仕事</x-ui.tag>
-        <x-ui.tag>友達</x-ui.tag>
+    <div
+        x-data="{
+            tags: @js($defaultTags),
+            selectedTags: [],
+            newTag: '',
 
-        <x-ui.tag>趣味</x-ui.tag>
-        <x-ui.tag>遊び</x-ui.tag>
-        <x-ui.tag>勉強</x-ui.tag>
-        <x-ui.tag>恋愛</x-ui.tag>
+            toggleTag(tag) {
+                if (this.selectedTags.includes(tag)) {
+                    this.selectedTags = this.selectedTags.filter(
+                        item => item !== tag
+                    );
 
-        <x-ui.tag>スポーツ</x-ui.tag>
-        <x-ui.tag>ゲーム</x-ui.tag>
-        <x-ui.tag>音楽</x-ui.tag>
-        <x-ui.tag>あずは</x-ui.tag>
-    </div>
+                    return;
+                }
 
-    <div class="mt-[22px] border-b border-[#3C2415]"></div>
+                if (this.selectedTags.length < 3) {
+                    this.selectedTags.push(tag);
+                }
+            },
 
-    <div class="mt-[22px]">
-        <p class="text-[14px] font-semibold">新しいタグを入力</p>
-        <div class="mt-1 flex items-center gap-3">
-            <input
-                type="text"
-                placeholder="例：編み物、買い物など"
-                class="flex-1 rounded-full bg-white px-5 py-3 text-sm font-semibold border-none placeholder:text-placeholder focus:outline-none"
-            >
-            <button
-                class="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-text"
-            >
-                追加
-            </button>
+            addTag() {
+                const tag = this.newTag.trim();
+
+                if (tag === '') {
+                    return;
+                }
+
+                if (this.tags.includes(tag)) {
+                    this.newTag = '';
+                    return;
+                }
+
+                this.tags.push(tag);
+                this.newTag = '';
+            }
+        }"
+    >
+        {{-- タグ一覧 --}}
+        <div class="mt-[52px] grid grid-cols-4 gap-x-2 gap-y-[18px]">
+            <template x-for="tag in tags" x-bind:key="tag">
+                <button
+                    type="button"
+                    x-on:click="toggleTag(tag)"
+                    x-bind:class="{
+                        '!bg-primary': selectedTags.includes(tag)
+                    }"
+                    class="
+                        flex h-[54px] w-full
+                        items-center justify-center
+                        rounded-[30px]
+                        bg-white
+                        text-[16px] font-semibold text-text
+                        transition-colors duration-200
+                    "
+                >
+                    <span x-text="tag"></span>
+                </button>
+            </template>
+        </div>
+
+        <div class="mt-[22px] border-b border-[#3C2415]"></div>
+
+        {{-- 新しいタグの追加 --}}
+        <div class="mt-[22px]">
+            <p class="text-[14px] font-semibold">
+                新しいタグを入力
+            </p>
+
+            <div class="mt-1 flex items-center gap-3">
+                <input
+                    type="text"
+                    x-model="newTag"
+                    x-on:keydown.enter.prevent="addTag()"
+                    placeholder="例：編み物、買い物など"
+                    class="
+                        flex-1 rounded-full border-none
+                        bg-white px-5 py-3
+                        text-sm font-semibold
+                        placeholder:text-placeholder
+                        focus:outline-none
+                    "
+                >
+
+                <button
+                    type="button"
+                    x-on:click="addTag()"
+                    class="
+                        rounded-full bg-primary
+                        px-6 py-3
+                        text-sm font-semibold text-text
+                    "
+                >
+                    追加
+                </button>
+            </div>
         </div>
     </div>
-
-
-    <div class="mt-8 flex justify-end">
-        <x-ui.button :route="route('home')">
-            投稿する
-        </x-ui.button>
-    </div>
-
 </div>
-
 @endsection
