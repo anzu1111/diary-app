@@ -41,9 +41,9 @@ Route::get('/tags', function () {
     return view('pages.post.tags');
 })->name('post.tags');
 
-Route::get('/profile', function () {
+Route::get('/mypage', function () {
     return view('pages.profile');
-})->name('profile');
+})->name('mypage');
 
 
 
