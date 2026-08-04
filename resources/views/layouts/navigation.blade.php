@@ -13,7 +13,7 @@
                 class="w-6 h-6 stroke-[1.0]"/>
         </a>
 
-        <a href="/profile"
+        <a href="/mypage"
             class="flex items-center justify-center text-text">
             <x-lucide-user
                 class="w-6 h-6 stroke-[1.0]" />
