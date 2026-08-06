@@ -45,7 +45,7 @@
 
             <div class="flex flex-col items-center">
                 <p class="text-[12px] text-text">今年</p>
-                <p class="mt-2 text-[16px] font-semibold text-text">34回</p>
+                <p class="mt-2 text-[16px] font-semibold text-text">35回</p>
             </div>
 
             <div class="flex flex-col items-center">
