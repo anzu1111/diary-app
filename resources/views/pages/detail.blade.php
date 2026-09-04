@@ -6,7 +6,7 @@
         <a href="{{ route('home') }}">
             <x-lucide-chevron-left class="w-6 h-6 stroke-[1.5]"/>
         </a>
-        <a href="" class="flex items-center gap-1 text-primary">
+        <a href="{{ route('post') }}" class="flex items-center gap-1 text-primary">
             <span class="text-sm font-semibold">編集</span>
             <x-lucide-pencil-line class="w-3 h-3 stroke-[1.5]"/>
         </a>

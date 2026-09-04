@@ -36,16 +36,23 @@
             px-5
         "
     >
-        <button
+        <label
+            for="photo"
             type="button"
-            class="flex items-center gap-2"
+            class="flex cursor-pointer items-center gap-2"
         >
             <x-lucide-camera class="h-6 w-6 stroke-[1.0]" />
             <span class="text-sm font-semibold">
                 写真を追加
             </span>
-        </button>
-
+        </label>
+        <input 
+            id="photo"
+            name="photo"
+            type="file"
+            accept="image/*"
+            class="hidden"
+        >
         <x-ui.button href="{{ route('post.emotion') }}">
             次へ→
         </x-ui.button>
