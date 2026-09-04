@@ -27,13 +27,23 @@
         ></textarea>
     </div>
 
-    <div class="mt-4 flex items-center justify-between">
+    <div
+        class="
+            fixed bottom-[112px] left-1/2 z-50
+            flex w-full max-w-md
+            -translate-x-1/2
+            items-center justify-between
+            px-5
+        "
+    >
         <button
             type="button"
             class="flex items-center gap-2"
         >
-            <x-lucide-camera class="w-6 h-6 stroke-[1.0]" />
-            <span class="text-sm font-semibold">写真を追加</span>
+            <x-lucide-camera class="h-6 w-6 stroke-[1.0]" />
+            <span class="text-sm font-semibold">
+                写真を追加
+            </span>
         </button>
 
         <x-ui.button href="{{ route('post.emotion') }}">

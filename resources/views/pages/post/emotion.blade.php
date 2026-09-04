@@ -103,9 +103,16 @@
 
 
 
-    <div class="flex justify-end mt-[48px]">
+    <div
+        class="
+            fixed bottom-[112px] left-1/2 z-50
+            flex w-full max-w-md
+            -translate-x-1/2
+            justify-end px-4
+        "
+    >
         <x-ui.button href="{{ route('post.tags') }}">
-            次へ→
+            次へ
         </x-ui.button>
     </div>
 </div>
